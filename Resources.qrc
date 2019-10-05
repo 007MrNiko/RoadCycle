@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/BG">
+    <qresource prefix="/Pictures">
         <file>Data/Pictures/LoadingScreen.png</file>
     </qresource>
 </RCC>

@@ -6,22 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1261</width>
-    <height>600</height>
+    <width>1148</width>
+    <height>622</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="RoadData">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>761</width>
+      <width>771</width>
       <height>531</height>
      </rect>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
     </property>
     <column>
      <property name="text">
@@ -45,7 +51,7 @@
     </column>
     <column>
      <property name="text">
-      <string>New Column</string>
+      <string>Pavement</string>
      </property>
     </column>
     <column>
@@ -54,13 +60,26 @@
      </property>
     </column>
    </widget>
+   <widget class="QPushButton" name="resetButton">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>500</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reset</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1261</width>
+     <width>1148</width>
      <height>25</height>
     </rect>
    </property>

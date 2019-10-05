@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
     //creating loading screen
     QSplashScreen *loading_screen = new QSplashScreen;
-    loading_screen->setPixmap(QPixmap(":/BG/Data/Pictures/LoadingScreen.png"));
+    loading_screen->setPixmap(QPixmap(":/Pictures/Data/Pictures/LoadingScreen.png"));
     //loading_screen->setPixmap(QPixmap("./Data/Picture/LoadingScreen.png"));
 
     loading_screen->show();
