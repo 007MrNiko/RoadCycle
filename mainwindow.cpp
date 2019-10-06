@@ -9,7 +9,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     mkdir("Data"); //create directory for files
     fill_table_from_txt();
-
 }
 
 MainWindow::~MainWindow()
@@ -47,7 +46,7 @@ void MainWindow::fill_table_from_txt()
 }
 
 
-void MainWindow::on_resetButton_clicked() //reseting data from vector
+void MainWindow::on_actionResetTable_triggered() //reseting data from vector
 {
     QMessageBox::StandardButton reply;
         reply = QMessageBox::warning(this,"Reset data","You really want to reset all data?", QMessageBox::No | QMessageBox::Yes);
@@ -68,4 +67,9 @@ void MainWindow::on_resetButton_clicked() //reseting data from vector
 
         //set our table
         fill_table_from_txt();
+}
+
+void MainWindow::on_actionDeleteElement_triggered()
+{
+    ui->RoadData->removeRow(ui->RoadData->currentRow());
 }

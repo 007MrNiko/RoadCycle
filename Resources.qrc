@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/Pictures">
         <file>Data/Pictures/LoadingScreen.png</file>
+        <file>Data/Pictures/AddButton.png</file>
+        <file>Data/Pictures/DeleteButton.png</file>
+        <file>Data/Pictures/ResetButton.png</file>
     </qresource>
 </RCC>

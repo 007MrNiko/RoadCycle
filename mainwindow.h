@@ -6,6 +6,7 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QTableWidget>
+#include <QtQuick/QQuickItem>
 #include <fstream>
 #include <vector>
 #include <string>
@@ -26,7 +27,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_resetButton_clicked();
+    void on_actionResetTable_triggered();
+
+    void on_actionDeleteElement_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -34,21 +37,24 @@ private:
     void fill_table_from_txt();
 
     /*
-    state - державні
+    state - державна
     regional - регіональна
-    province - обласні
+    province - обласна
     local - місцева
     */
 
     vector<vector<string>> //name type length(km) lines pavement divider
     roads_data{
-        {"M10","state","86.7","2","no","no"},
-        {"T1414","province","5","2","yes","no"},
-        {"P02","regional","171.7","2","no","no"},
-        {"A2","state","486","6","no","yes"},
-        {"E27","regional","328","4","no","yes"},
-        {"S7","province","264.2","2","yes","no"},
-
+        {"M10","державна","86.7","2","так","ні"},
+        {"T1414","місцева","5","2","так","ні"},
+        {"P02","регіональна","171.7","2","ні","ні"},
+        {"A2","державна","486","6","ні","так"},
+        {"E27","регіональна","328","4","ні","так"},
+        {"S7","обласна","264.2","2","так","ні"},
+        {"P48","регіональна","159.9","2","ні","ні"},
+        {"H22","місцева","155.9","2","ні","ні"},
+        {"M06","обласна","888.8","3","ні","ні"},
+        {"E40","регіональна","8500 ","6","так","так"}
      };
 
 };
