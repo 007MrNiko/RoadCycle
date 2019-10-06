@@ -31,6 +31,10 @@ private slots:
 
     void on_actionDeleteElement_triggered();
 
+    void on_actionAscendingSortColumn_triggered();
+
+    void on_actionDescendingSortColumn_triggered();
+
 private:
     Ui::MainWindow *ui;
 
