@@ -110,6 +110,8 @@
    <addaction name="actionResetTable"/>
    <addaction name="actionAscendingSortColumn"/>
    <addaction name="actionDescendingSortColumn"/>
+   <addaction name="actionDeleteAllElement"/>
+   <addaction name="actionOpenNewFile"/>
   </widget>
   <action name="actionAddElement">
    <property name="icon">
@@ -172,6 +174,30 @@
    </property>
    <property name="toolTip">
     <string>Сортувати обраний колонку за спаданням</string>
+   </property>
+  </action>
+  <action name="actionDeleteAllElement">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Pictures/Data/Pictures/DeleteAllButton.png</normaloff>:/Pictures/Data/Pictures/DeleteAllButton.png</iconset>
+   </property>
+   <property name="text">
+    <string>Очистити таблицю</string>
+   </property>
+   <property name="toolTip">
+    <string>Повністю очистити таблицю</string>
+   </property>
+  </action>
+  <action name="actionOpenNewFile">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Pictures/Data/Pictures/OpenFileButton.png</normaloff>:/Pictures/Data/Pictures/OpenFileButton.png</iconset>
+   </property>
+   <property name="text">
+    <string>Відкрити з файлу</string>
+   </property>
+   <property name="toolTip">
+    <string>Відкрити ваш список з файлу на комп'ютері</string>
    </property>
   </action>
  </widget>

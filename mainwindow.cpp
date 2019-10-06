@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    setWindowTitle("RoadCycle");
+
     mkdir("Data"); //create directory for files
     fill_table_from_txt();
 }
@@ -15,7 +17,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 void MainWindow::fill_table_from_txt()
 {
@@ -57,8 +58,9 @@ void MainWindow::fill_table_from_txt()
 
 void MainWindow::on_actionResetTable_triggered() //reseting data from vector
 {
+    QApplication::beep();
     QMessageBox::StandardButton reply;
-        reply = QMessageBox::warning(this,"Reset data","You really want to reset all data?", QMessageBox::No | QMessageBox::Yes);
+        reply = QMessageBox::warning(this,"Відновити дані","Ви дійсно бажаєте відновити дані до початкових?", QMessageBox::No | QMessageBox::Yes);
 
         if(reply == QMessageBox::Yes){
             ofstream fileOut;
@@ -80,7 +82,40 @@ void MainWindow::on_actionResetTable_triggered() //reseting data from vector
 
 void MainWindow::on_actionDeleteElement_triggered()
 {
-    ui->RoadData->removeRow(ui->RoadData->currentRow());
+    QMessageBox::StandardButton delete_data;
+    delete_data = QMessageBox::critical(this,"Видалити рядок","Ви дійсно бажаєте безповоротно видалити цей рядок?", QMessageBox::No | QMessageBox::Yes);
+
+    if(delete_data == QMessageBox::Yes){
+
+        QTableWidgetItem* theItem = ui->RoadData->item(ui->RoadData->currentRow(), 0);
+
+        string road_name_to_delete = theItem->text().toUtf8().constData(); //take our road name to delete right line from txt
+
+        ifstream roads("Data/DataBase.txt");
+        ofstream temp("Data/Temp.txt");
+
+        string road_name, road_type, road_length, road_lines, road_pavement, road_divider;
+
+        while(roads >> road_name >> road_type >> road_length >> road_lines >> road_pavement>> road_divider)
+            {
+                if(road_name_to_delete!=road_name){ // write data to Temp.txt our without delete line
+                    temp << road_name << " "
+                         << road_type << " "
+                         << road_length << " "
+                         << road_lines << " "
+                         << road_pavement << " "
+                         << road_divider << "\n";
+                    }
+            }
+
+        roads.close();
+        temp.close();
+        remove("Data/DataBase.txt");
+        rename("Data/Temp.txt","Data/DataBase.txt");
+
+        fill_table_from_txt();
+        //ui->RoadData->removeRow(ui->RoadData->currentRow());
+    }
 }
 
 void MainWindow::on_actionAscendingSortColumn_triggered()
@@ -91,4 +126,85 @@ void MainWindow::on_actionAscendingSortColumn_triggered()
 void MainWindow::on_actionDescendingSortColumn_triggered()
 {
     ui->RoadData->sortItems(ui->RoadData->currentColumn(), Qt::DescendingOrder);
+}
+
+void MainWindow::on_actionAddElement_triggered()
+{
+    int result{};
+    DialogAddItem addItem(this);    //creating dialog window
+    addItem.setWindowTitle("Додати дорогу");
+    result = addItem.exec();
+
+    string road_name = addItem.road_name().toUtf8().constData();
+    string road_type = addItem.road_type().toUtf8().constData();
+    double road_length = addItem.road_length();
+    string road_lines = addItem.road_lines().toUtf8().constData();
+    string road_pavement = addItem.road_pavement().toUtf8().constData();
+    string road_divider = addItem.road_divider().toUtf8().constData();
+
+    if (result == QDialog::Accepted){
+        ofstream fileout ("Data/DataBase.txt",ios::app); //adding data to our txt
+
+        fileout << road_name << " "
+                << road_type << " "
+                << road_length << " "
+                << road_lines << " "
+                << road_pavement << " "
+                << road_divider << "\n";
+
+        fileout.close();
+    }
+
+    fill_table_from_txt(); //fill our table
+}
+
+void MainWindow::on_actionDeleteAllElement_triggered()
+{
+    QApplication::beep();
+    QMessageBox::StandardButton delete_data;
+    delete_data = QMessageBox::critical(this,"Обнулити таблицю","Ви дійсно бажаєте безповоротно видалити таблицю?", QMessageBox::No | QMessageBox::Yes);
+
+    if(delete_data == QMessageBox::Yes){
+        ofstream reset_file;
+        reset_file.open("Data/DataBase.txt", ios::trunc); //small cheat to clean file :)
+        reset_file.close();
+        fill_table_from_txt();
+    }
+}
+
+void MainWindow::on_actionOpenNewFile_triggered()
+{
+    QApplication::beep();
+    QMessageBox::StandardButton rewrite_data;
+    rewrite_data = QMessageBox::warning(this,"Перезаписати таблицю","Ви дійсно бажаєте перезаписати таблицю?\nВаші теперешні дані буде втрачено", QMessageBox::No | QMessageBox::Yes);
+
+    if(rewrite_data == QMessageBox::Yes){
+        QString filter = "All File (*.*) ;; Text File (*.txt)";
+        QString opened_file = QFileDialog::getOpenFileName(this,"Open a file", QDir::homePath(), filter);
+
+        ofstream our_data_base;
+        ifstream chosen_data_base;
+
+        our_data_base.open("Data/DataBase.txt", ios::trunc); //cleaning our
+        chosen_data_base.open(opened_file.toUtf8().constData());
+
+        string road_name, road_type, road_length, road_lines, road_pavement, road_divider;
+
+        while(chosen_data_base >> road_name >> road_type >> road_length >> road_lines >> road_pavement>> road_divider)
+            {
+                our_data_base << road_name << " "
+                              << road_type << " "
+                              << road_length << " "
+                              << road_lines << " "
+                              << road_pavement << " "
+                              << road_divider << "\n";
+
+            }
+
+        our_data_base.close();
+        chosen_data_base.close();
+
+    }
+
+    fill_table_from_txt();
 }

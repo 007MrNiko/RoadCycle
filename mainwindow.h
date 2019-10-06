@@ -7,10 +7,16 @@
 #include <QMessageBox>
 #include <QTableWidget>
 #include <QtQuick/QQuickItem>
+#include <QFileDialog>
+#include <QDir>
+
 #include <fstream>
 #include <vector>
 #include <string>
 #include <dir.h>
+#include <bits/stdc++.h>
+
+#include "dialogadditem.h"
 
 using namespace std;
 
@@ -34,6 +40,12 @@ private slots:
     void on_actionAscendingSortColumn_triggered();
 
     void on_actionDescendingSortColumn_triggered();
+
+    void on_actionAddElement_triggered();
+
+    void on_actionDeleteAllElement_triggered();
+
+    void on_actionOpenNewFile_triggered();
 
 private:
     Ui::MainWindow *ui;

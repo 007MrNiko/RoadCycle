@@ -6,5 +6,7 @@
         <file>Data/Pictures/ResetButton.png</file>
         <file>Data/Pictures/SortDownButton.png</file>
         <file>Data/Pictures/SortUpButton.png</file>
+        <file>Data/Pictures/DeleteAllButton.png</file>
+        <file>Data/Pictures/OpenFileButton.png</file>
     </qresource>
 </RCC>
