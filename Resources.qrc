@@ -8,5 +8,9 @@
         <file>Data/Pictures/SortUpButton.png</file>
         <file>Data/Pictures/DeleteAllButton.png</file>
         <file>Data/Pictures/OpenFileButton.png</file>
+        <file>Data/Pictures/Task1Button.png</file>
+        <file>Data/Pictures/Task2Button.png</file>
+        <file>Data/Pictures/Task3Button.png</file>
+        <file>Data/Pictures/Task4Button.png</file>
     </qresource>
 </RCC>

@@ -16,7 +16,8 @@
 #include <dir.h>
 #include <bits/stdc++.h>
 
-#include "dialogadditem.h"
+#include "dialogadditem.h" // adding data
+#include "taskoutput.h" //output tasks
 
 using namespace std;
 
@@ -46,6 +47,14 @@ private slots:
     void on_actionDeleteAllElement_triggered();
 
     void on_actionOpenNewFile_triggered();
+
+    void on_actionFirstTask_triggered();
+
+    void on_actionSecondTask_triggered();
+
+    void on_actionThirdTask_triggered();
+
+    void on_actionFourthTask_triggered();
 
 private:
     Ui::MainWindow *ui;

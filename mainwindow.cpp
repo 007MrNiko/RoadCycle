@@ -53,6 +53,7 @@ void MainWindow::fill_table_from_txt()
         }
         fileIn.close();
     }
+    fileIn_to_count.close();
 }
 
 
@@ -207,4 +208,36 @@ void MainWindow::on_actionOpenNewFile_triggered()
     }
 
     fill_table_from_txt();
+}
+
+void MainWindow::on_actionFirstTask_triggered()
+{
+    taskOutput outputTask(this);    //creating dialog window
+    outputTask.setWindowTitle("Перше завдання");
+    outputTask.output_task_1();
+    outputTask.exec();
+}
+
+void MainWindow::on_actionSecondTask_triggered()
+{
+    taskOutput outputTask(this);    //creating dialog window
+    outputTask.setWindowTitle("Друге завдання");
+    outputTask.output_task_2();
+    outputTask.exec();
+}
+
+void MainWindow::on_actionThirdTask_triggered()
+{
+    taskOutput outputTask(this);    //creating dialog window
+    outputTask.setWindowTitle("Третє завдання");
+    outputTask.output_task_3();
+    outputTask.exec();
+}
+
+void MainWindow::on_actionFourthTask_triggered()
+{
+    taskOutput outputTask(this);    //creating dialog window
+    outputTask.setWindowTitle("Четверте завдання");
+    outputTask.output_task_4();
+    outputTask.exec();
 }

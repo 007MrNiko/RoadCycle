@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>taskOutput</class>
+ <widget class="QDialog" name="taskOutput">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>802</width>
+    <height>596</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="labelTask">
+     <property name="minimumSize">
+      <size>
+       <width>780</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>780</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTableWidget" name="RoadData">
+     <property name="minimumSize">
+      <size>
+       <width>780</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>780</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="cursor" stdset="0">
+      <cursorShape>CrossCursor</cursorShape>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <column>
+      <property name="text">
+       <string>Назва</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Тип</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Довжина (км)</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Смуг</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Тротуар</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Розділювач</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="labelTypes">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>780</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>780</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

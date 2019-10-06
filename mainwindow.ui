@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1173</width>
-    <height>783</height>
+    <width>802</width>
+    <height>807</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -74,7 +74,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1173</width>
+     <width>802</width>
      <height>25</height>
     </rect>
    </property>
@@ -112,6 +112,10 @@
    <addaction name="actionDescendingSortColumn"/>
    <addaction name="actionDeleteAllElement"/>
    <addaction name="actionOpenNewFile"/>
+   <addaction name="actionFirstTask"/>
+   <addaction name="actionSecondTask"/>
+   <addaction name="actionThirdTask"/>
+   <addaction name="actionFourthTask"/>
   </widget>
   <action name="actionAddElement">
    <property name="icon">
@@ -198,6 +202,58 @@
    </property>
    <property name="toolTip">
     <string>Відкрити ваш список з файлу на комп'ютері</string>
+   </property>
+  </action>
+  <action name="actionFirstTask">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Pictures/Data/Pictures/Task1Button.png</normaloff>:/Pictures/Data/Pictures/Task1Button.png</iconset>
+   </property>
+   <property name="text">
+    <string>Перше завдання</string>
+   </property>
+   <property name="toolTip">
+    <string>Найкоротша дорога, де найбільша кількість смуг</string>
+   </property>
+  </action>
+  <action name="actionSecondTask">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Pictures/Data/Pictures/Task2Button.png</normaloff>:/Pictures/Data/Pictures/Task2Button.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друге завдання</string>
+   </property>
+   <property name="toolTip">
+    <string>Всі дороги, в яких наявні розділювачі посередині,
+кількість смуг &gt; 2 та згрупувати за типом</string>
+   </property>
+  </action>
+  <action name="actionThirdTask">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Pictures/Data/Pictures/Task3Button.png</normaloff>:/Pictures/Data/Pictures/Task3Button.png</iconset>
+   </property>
+   <property name="text">
+    <string>Третє завдання</string>
+   </property>
+   <property name="toolTip">
+    <string>Типи автомобільних доріг, з найбільшою протяжністю
+та наявністю пішохідних доріжок</string>
+   </property>
+  </action>
+  <action name="actionFourthTask">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Pictures/Data/Pictures/Task4Button.png</normaloff>:/Pictures/Data/Pictures/Task4Button.png</iconset>
+   </property>
+   <property name="text">
+    <string>Четверте завдання</string>
+   </property>
+   <property name="toolTip">
+    <string>Автомобільні дороги з найбільшою кількістю смуг
+та наявними пішохідними доріжками,
+які належать до регіональних</string>
    </property>
   </action>
  </widget>
