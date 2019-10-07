@@ -142,21 +142,12 @@ void MainWindow::on_actionAddElement_triggered()
     string road_name = addItem.road_name().toUtf8().constData();
     string road_type = addItem.road_type().toUtf8().constData();
     double road_length = addItem.road_length();
-    string road_lines = addItem.road_lines().toUtf8().constData();
+    int road_lines = addItem.road_lines();
     string road_pavement = addItem.road_pavement().toUtf8().constData();
     string road_divider = addItem.road_divider().toUtf8().constData();
 
     if (result == QDialog::Accepted){
-        ofstream fileout ("Data/DataBase.txt",ios::app); //adding data to our txt
-
-        fileout << road_name << " "
-                << road_type << " "
-                << road_length << " "
-                << road_lines << " "
-                << road_pavement << " "
-                << road_divider << "\n";
-
-        fileout.close();
+        Road(road_name,road_type,road_length,road_lines,road_pavement,road_divider);
     }
 
     fill_table_from_txt(); //fill our table
@@ -219,6 +210,12 @@ void MainWindow::on_actionOpenNewFile_triggered()
 
 void MainWindow::on_actionFirstTask_triggered()
 {
+    ifstream file("Data/DataBase.txt", ios::ate); // ios::ate means open at end
+    if (file.tellg() == 0){
+        QApplication::beep();
+        QMessageBox::warning(this,"Увага!","Ваша таблиця пуста!");
+        return;
+    }
     taskOutput outputTask(this);    //creating dialog window
     outputTask.setWindowTitle("Перше завдання");
     outputTask.output_task_1();
@@ -227,6 +224,12 @@ void MainWindow::on_actionFirstTask_triggered()
 
 void MainWindow::on_actionSecondTask_triggered()
 {
+    ifstream file("Data/DataBase.txt", ios::ate); // ios::ate means open at end
+    if (file.tellg() == 0){
+        QApplication::beep();
+        QMessageBox::warning(this,"Увага!","Ваша таблиця пуста!");
+        return;
+    }
     taskOutput outputTask(this);    //creating dialog window
     outputTask.setWindowTitle("Друге завдання");
     outputTask.output_task_2();
@@ -235,6 +238,12 @@ void MainWindow::on_actionSecondTask_triggered()
 
 void MainWindow::on_actionThirdTask_triggered()
 {
+    ifstream file("Data/DataBase.txt", ios::ate); // ios::ate means open at end
+    if (file.tellg() == 0){
+        QApplication::beep();
+        QMessageBox::warning(this,"Увага!","Ваша таблиця пуста!");
+        return;
+    }
     taskOutput outputTask(this);    //creating dialog window
     outputTask.setWindowTitle("Третє завдання");
     outputTask.output_task_3();
@@ -243,8 +252,32 @@ void MainWindow::on_actionThirdTask_triggered()
 
 void MainWindow::on_actionFourthTask_triggered()
 {
+    ifstream file("Data/DataBase.txt", ios::ate); // ios::ate means open at end
+    if (file.tellg() == 0){
+        QApplication::beep();
+        QMessageBox::warning(this,"Увага!","Ваша таблиця пуста!");
+        return;
+    }
     taskOutput outputTask(this);    //creating dialog window
     outputTask.setWindowTitle("Четверте завдання");
     outputTask.output_task_4();
     outputTask.exec();
+}
+
+Road::Road(string _name, string _type, double _length, int _lines, string _pavement, string _divider) // set up constructor
+: road_name{_name}, road_type{_type}, road_length{_length}, road_lines{_lines}, road_pavement{_pavement}, road_divider{_divider}{ //pass data to constructor
+    add_data_from_class(); //call class "Road" function
+}
+
+void Road::add_data_from_class(){
+    ofstream fileout ("Data/DataBase.txt",ios::app); //adding data to our txt
+
+    fileout << road_name << " "
+            << road_type << " "
+            << road_length << " "
+            << road_lines << " "
+            << road_pavement << " "
+            << road_divider << "\n";
+
+    fileout.close();
 }

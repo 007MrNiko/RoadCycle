@@ -38,8 +38,10 @@ QString DialogAddItem::road_type() const{
 double DialogAddItem::road_length() const{
     return  ui->roadLength->value();
 }
-QString DialogAddItem::road_lines() const{
-    return ui->roadLines->currentText();
+int DialogAddItem::road_lines() const{
+    QString lines_str = ui->roadLines->currentText();
+    int lines_int = lines_str.toInt();
+    return lines_int;
 }
 QString DialogAddItem::road_pavement() const{
     return ui->roadPavement->currentText();

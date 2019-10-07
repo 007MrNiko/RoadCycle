@@ -83,4 +83,15 @@ private:
      };
 
 };
+
+class Road{
+private:
+    string road_name, road_type, road_pavement, road_divider;
+    double road_length;
+    int road_lines;
+public:
+    Road(string, string, double, int, string, string);
+    void add_data_from_class();
+};
+
 #endif // MAINWINDOW_H

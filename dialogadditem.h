@@ -30,7 +30,7 @@ public:
     QString road_name() const;
     QString road_type() const;
     double road_length() const;
-    QString road_lines() const;
+    int road_lines() const;
     QString road_pavement() const;
     QString road_divider() const;
 
