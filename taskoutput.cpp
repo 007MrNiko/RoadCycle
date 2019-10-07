@@ -6,6 +6,7 @@ taskOutput::taskOutput(QWidget *parent) :
     ui(new Ui::taskOutput)
 {
     ui->setupUi(this);
+    ui->RoadData->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); // make table look nice)
 }
 
 taskOutput::~taskOutput()
@@ -15,6 +16,7 @@ taskOutput::~taskOutput()
 
 void taskOutput::output_task_1(){
 
+    setWindowIcon(QIcon(":/Pictures/Data/Pictures/Task1Button.png"));
     ui->labelTask->setText("Найкоротша дорога, де найбільша кількість смуг");
 
     string road_name, road_type, road_pavement, road_divider, temp_line;
@@ -60,6 +62,7 @@ void taskOutput::output_task_1(){
     }
 }
 void taskOutput::output_task_2(){
+    setWindowIcon(QIcon(":/Pictures/Data/Pictures/Task2Button.png"));
     ui->labelTask->setText("Всі дороги, в яких наявні розділювачі посередині,\nкількість смуг > 2 та згрупувати за типом");
 
     string road_name, road_type, road_pavement, road_divider, temp_line;
@@ -106,6 +109,7 @@ void taskOutput::output_task_2(){
     ui->RoadData->sortItems(1, Qt::AscendingOrder);
 }
 void taskOutput::output_task_3(){
+    setWindowIcon(QIcon(":/Pictures/Data/Pictures/Task3Button.png"));
     ui->labelTask->setText("Типи автомобільних доріг, з найбільшою протяжністю\nта наявністю пішохідних доріжок");
 
     string road_name, road_type, road_pavement, road_divider, temp_line;
@@ -172,6 +176,7 @@ void taskOutput::output_task_3(){
 
 }
 void taskOutput::output_task_4(){
+    setWindowIcon(QIcon(":/Pictures/Data/Pictures/Task4Button.png"));
     ui->labelTask->setText("Автомобільні дороги з найбільшою кількістю смуг\nта наявними пішохідними доріжками,\nякі належать до регіональних");
 
     string road_name, road_type, road_pavement, road_divider, temp_line;

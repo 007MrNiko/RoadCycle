@@ -6,6 +6,7 @@ DialogAddItem::DialogAddItem(QWidget *parent) :
     ui(new Ui::DialogAddItem)
 {
     ui->setupUi(this);
+    setWindowIcon(QIcon(":/Pictures/Data/Pictures/AddButton.png"));
 }
 
 DialogAddItem::~DialogAddItem()

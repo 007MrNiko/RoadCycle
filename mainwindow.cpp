@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     mkdir("Data"); //create directory for files
     fill_table_from_txt();
+    ui->RoadData->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); // make table look nice)
 }
 
 MainWindow::~MainWindow()
@@ -182,6 +183,10 @@ void MainWindow::on_actionOpenNewFile_triggered()
     if(rewrite_data == QMessageBox::Yes){
         QString filter = "All File (*.*) ;; Text File (*.txt)";
         QString opened_file = QFileDialog::getOpenFileName(this,"Open a file", QDir::homePath(), filter);
+
+        if(opened_file == ""){
+            return;
+        }
 
         ofstream our_data_base;
         ifstream chosen_data_base;

@@ -16,7 +16,15 @@ class DialogAddItem : public QDialog
 
 public:
     explicit DialogAddItem(QWidget *parent = nullptr);
-    ~DialogAddItem();
+    ~DialogAddItem();   
+
+private slots:
+    void on_enterButton_clicked();
+
+private:
+    Ui::DialogAddItem *ui;
+
+public:
 
     //creating variables to fill data from form
     QString road_name() const;
@@ -26,11 +34,6 @@ public:
     QString road_pavement() const;
     QString road_divider() const;
 
-private slots:
-    void on_enterButton_clicked();
-
-private:
-    Ui::DialogAddItem *ui;
 };
 
 #endif // DIALOGADDITEM_H
