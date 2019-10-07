@@ -19,3 +19,7 @@ H31 regional 123.4 2 yes no
 M15 local 789.4 3 yes no 
 E30 province 780.9 6 yes no 
 E45 regional 8500 6 yes yes 
+K32 regional 8500 4 yes no 
+G84 state 8500 3 yes yes 
+L18 regional 565.4 6 yes no 
+N13 regional 664.8 6 yes no 

@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     mkdir("Data"); //create directory for files
     fill_table_from_txt();
     ui->RoadData->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); // make table look nice)
+
 }
 
 MainWindow::~MainWindow()
