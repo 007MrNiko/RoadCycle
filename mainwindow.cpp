@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    setWindowIcon(QIcon(":/Pictures/Data/Pictures/ProgramIcon.png"));
+
     setWindowTitle("RoadCycle");
 
     mkdir("Data"); //create directory for files
