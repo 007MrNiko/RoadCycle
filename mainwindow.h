@@ -89,7 +89,7 @@ private:
 
 };
 
-class Road{
+class Road{ // class road to add data to .txt
 private:
     string road_name, road_type, road_pavement, road_divider;
     double road_length;

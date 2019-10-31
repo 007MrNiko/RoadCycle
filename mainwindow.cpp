@@ -1,18 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget *parent) //creating mainwindow
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    setWindowIcon(QIcon(":/Pictures/Data/Pictures/ProgramIcon.png"));
+    setWindowIcon(QIcon(":/Pictures/Data/Pictures/ProgramIcon.png")); // setting icon
 
-    setWindowTitle("RoadCycle");
+    setWindowTitle("RoadCycle"); // setting title
 
     mkdir("Data"); //create directory for files
-    fill_table_from_txt();
+    fill_table_from_txt(); // filling table
     ui->RoadData->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); // make table look nice)
 
 }
@@ -25,7 +25,7 @@ MainWindow::~MainWindow()
 void MainWindow::fill_table_from_txt()
 {
     string road_name, road_type, road_pavement, road_divider, temp_line;
-    double road_length;
+    double road_length;     // temp variables to accept data
     int road_lines;
     int amount_of_lines{0}, current_row{0};
 
@@ -85,7 +85,7 @@ void MainWindow::on_actionResetTable_triggered() //reseting data from vector
         fill_table_from_txt();
 }
 
-void MainWindow::on_actionDeleteElement_triggered()
+void MainWindow::on_actionDeleteElement_triggered() // deleting choosen element
 {
     QMessageBox::StandardButton delete_data;
     delete_data = QMessageBox::critical(this,"Видалити рядок","Ви дійсно бажаєте безповоротно видалити цей рядок?", QMessageBox::No | QMessageBox::Yes);
@@ -123,12 +123,12 @@ void MainWindow::on_actionDeleteElement_triggered()
     }
 }
 
-void MainWindow::on_actionAscendingSortColumn_triggered()
+void MainWindow::on_actionAscendingSortColumn_triggered() // sorting
 {
     ui->RoadData->sortItems(ui->RoadData->currentColumn(), Qt::AscendingOrder);
 }
 
-void MainWindow::on_actionDescendingSortColumn_triggered()
+void MainWindow::on_actionDescendingSortColumn_triggered() // sorting
 {
     ui->RoadData->sortItems(ui->RoadData->currentColumn(), Qt::DescendingOrder);
 }
@@ -140,21 +140,21 @@ void MainWindow::on_actionAddElement_triggered()
     addItem.setWindowTitle("Додати дорогу");
     result = addItem.exec();
 
-    string road_name = addItem.road_name().toUtf8().constData();
+    string road_name = addItem.road_name().toUtf8().constData(); // earn data from dialog
     string road_type = addItem.road_type().toUtf8().constData();
     double road_length = addItem.road_length();
     int road_lines = addItem.road_lines();
     string road_pavement = addItem.road_pavement().toUtf8().constData();
     string road_divider = addItem.road_divider().toUtf8().constData();
 
-    if (result == QDialog::Accepted){
+    if (result == QDialog::Accepted){ // pass taken data to class
         Road(road_name,road_type,road_length,road_lines,road_pavement,road_divider);
     }
 
     fill_table_from_txt(); //fill our table
 }
 
-void MainWindow::on_actionDeleteAllElement_triggered()
+void MainWindow::on_actionDeleteAllElement_triggered() // clear table
 {
     QApplication::beep();
     QMessageBox::StandardButton delete_data;
@@ -168,27 +168,27 @@ void MainWindow::on_actionDeleteAllElement_triggered()
     }
 }
 
-void MainWindow::on_actionOpenNewFile_triggered()
+void MainWindow::on_actionOpenNewFile_triggered() // open from file
 {
     QApplication::beep();
     QMessageBox::StandardButton rewrite_data;
     rewrite_data = QMessageBox::warning(this,"Перезаписати таблицю","Ви дійсно бажаєте перезаписати таблицю?\nВаші теперешні дані буде втрачено", QMessageBox::No | QMessageBox::Yes);
 
     if(rewrite_data == QMessageBox::Yes){
-        QString filter = "All File (*.*) ;; Text File (*.txt)";
-        QString opened_file = QFileDialog::getOpenFileName(this,"Open a file", QDir::homePath(), filter);
+        QString filter = "All File (*.*) ;; Text File (*.txt)"; // seting filter data in explorer
+        QString opened_file = QFileDialog::getOpenFileName(this,"Open a file", QDir::homePath(), filter); // creating string with file adress
 
-        if(opened_file == ""){
+        if(opened_file == ""){ // do nothing when if path is empty "nothing selected"
             return;
         }
 
         ofstream our_data_base;
         ifstream chosen_data_base;
 
-        our_data_base.open("Data/DataBase.txt", ios::trunc); //cleaning our
+        our_data_base.open("Data/DataBase.txt", ios::trunc); //cleaning our .txt
         chosen_data_base.open(opened_file.toUtf8().constData());
 
-        string road_name, road_type, road_length, road_lines, road_pavement, road_divider;
+        string road_name, road_type, road_length, road_lines, road_pavement, road_divider; // temp values
 
         while(chosen_data_base >> road_name >> road_type >> road_length >> road_lines >> road_pavement>> road_divider)
             {
